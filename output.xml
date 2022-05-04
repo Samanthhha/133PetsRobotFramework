@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.2 on win32)" generated="20220503 17:52:03.919" rpa="false" schemaversion="3">
+<suite id="s1" name="Consulta Google" source="C:\Users\saman\PycharmProjects\133PetsRobotFramework\consulta_google.robot">
+<test id="s1-t1" name="Consulta Google" line="14">
+<kw name="Acessar o Chrome na pagina &lt;https://www.google.com&gt;" sourcename="Acessar o ${browser} na pagina &lt;${url}&gt;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220503 17:52:04.098" level="INFO">Opening browser 'Chrome' to base url 'https://www.google.com'.</msg>
+<status status="PASS" starttime="20220503 17:52:04.098" endtime="20220503 17:52:05.946"/>
+</kw>
+<status status="PASS" starttime="20220503 17:52:04.098" endtime="20220503 17:52:05.946"/>
+</kw>
+<kw name="Digitar na pesquisa &quot;Ovos de Pascoa&quot;" sourcename="Digitar na pesquisa &quot;${palavra_chave}&quot;">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${palavra_chave}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220503 17:52:05.947" level="INFO">${palavra_chave} = Ovos de Pascoa</msg>
+<status status="PASS" starttime="20220503 17:52:05.947" endtime="20220503 17:52:05.947"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name = q</arg>
+<arg>${palavra_chave}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220503 17:52:05.948" level="INFO">Typing text 'Ovos de Pascoa' into text field 'name = q'.</msg>
+<status status="PASS" starttime="20220503 17:52:05.947" endtime="20220503 17:52:06.059"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>name = q</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220503 17:52:06.060" level="INFO">Sending key(s) ('ENTER',) to name = q element.</msg>
+<msg timestamp="20220503 17:52:06.347" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220503 17:52:06.347" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220503 17:52:06.060" endtime="20220503 17:52:07.430"/>
+</kw>
+<status status="PASS" starttime="20220503 17:52:05.946" endtime="20220503 17:52:07.430"/>
+</kw>
+<kw name="Validar se aparece no titulo da guia o resultado esperado">
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${titulo}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20220503 17:52:07.438" level="INFO">${titulo} = Ovos de Pascoa - Pesquisa Google</msg>
+<status status="PASS" starttime="20220503 17:52:07.431" endtime="20220503 17:52:07.438"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${titulo}</arg>
+<arg>${palavra_chave}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20220503 17:52:07.439" endtime="20220503 17:52:07.439"/>
+</kw>
+<status status="PASS" starttime="20220503 17:52:07.431" endtime="20220503 17:52:07.439"/>
+</kw>
+<kw name="Fechar o browser">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220503 17:52:07.441" endtime="20220503 17:52:09.577"/>
+</kw>
+<status status="PASS" starttime="20220503 17:52:07.440" endtime="20220503 17:52:09.577"/>
+</kw>
+<tag>rapido</tag>
+<status status="PASS" starttime="20220503 17:52:04.097" endtime="20220503 17:52:09.577"/>
+</test>
+<doc>Testes de consulta no buscador Google
+abre o navegador Chrome
+realiza a consulta</doc>
+<status status="PASS" starttime="20220503 17:52:03.921" endtime="20220503 17:52:09.578"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">rapido</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Consulta Google">Consulta Google</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
