@@ -3,18 +3,19 @@ Documentation    Consultas no site da Petz
 
 Library   SeleniumLibrary
 Library   OperatingSystem
+Library   String
 
 Test Teardown   close browser
 
 *** Variables ***
-${brower}     Chrome
+${browser}     Chrome
 ${url}        https://www.petz.com.br
 
 *** Test Cases ***
 Consulta Produto com CLique na Lupa
     [Tags]    rapido
     Dado que acesso o site como cliente
-    Quando escrevo "Ração" na barra de pesquisa
+    Quando escrevo "RAÇÃO" na barra de pesquisa
     E clico no botao da lupa
     Entao exibe um grid e a frase do resultado esperado
     Feche o browser
@@ -22,7 +23,7 @@ Consulta Produto com CLique na Lupa
 Consulta Produto Apertando Enter
     [Tags]    rapido
     Dado que acesso o site como cliente
-    Quando escrevo "Ração" na barra de pesquisa
+    Quando escrevo "COLEIRA" na barra de pesquisa
     E aperto a tecla Enter
     Entao exibe um grid e a frase do resultado esperado
     Feche o browser
@@ -34,17 +35,18 @@ Dado que acesso o site como cliente
      open browser     ${url}   ${browser}
 
 Quando escrevo "${palavra_chave}" na barra de pesquisa
-     Set Test Variable    ${palavra_chave}
-     input text       name = q       ${palavra_chave}
+     convert to upper case    ${palavra_chave}
+     Set Test Variable        ${palavra_chave}
+     input text               name = q                 ${palavra_chave}
 
 E clico no botao da lupa
-     click button     button-search
+     click button     class = button-search
 
 Entao exibe um grid e a frase do resultado esperado
-     element should contain     css = h2Categoria.nomeCategoria     Resultados para "${palavra_chave}"
+     element should contain    css = h1.h2Categoria.nomeCategoria     RESULTADOS PARA "${palavra_chave}"
 
 Feche o browser
      close browser
 
 E aperto a tecla Enter
-     press key     name = q      ENTER
+     press keys     name = q      ENTER
